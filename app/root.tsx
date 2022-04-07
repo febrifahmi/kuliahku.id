@@ -11,7 +11,7 @@ import styles from "./tailwind.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Kuliahku.id",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -26,7 +26,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-black">
+      <body className="bg-gradient-to-r from-black to-gray-900">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
