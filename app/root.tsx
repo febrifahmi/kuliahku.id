@@ -17,6 +17,7 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
+  { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" },
 ];
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gradient-to-r from-black to-gray-900">
+      <body className="bg-black">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
