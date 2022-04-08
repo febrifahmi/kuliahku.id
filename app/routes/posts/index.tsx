@@ -1,10 +1,13 @@
-import { TopNavbar } from ".."
+import TopNavbar from "~/components/topnavbar"
 
-export default function PostsIndexRoute(){
-    return(
+export default function PostsIndexRoute() {
+    return (
         <>
-        <TopNavbar />
-        <h1>Posts Index Route</h1>
+            <TopNavbar />
+            <div className="text-white">
+                <h1>Posts Index Route</h1>
+                <div><a href="/posts/createpost">Create Post</a></div>
+            </div>
         </>
     )
 }

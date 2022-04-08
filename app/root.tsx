@@ -26,6 +26,7 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <script src="https://cdn.tiny.cloud/1/q4v8isq2oyybsqyiyk2kk4vmc209uzmdhpzhk1mwhh3kslel/tinymce/6/tinymce.min.js" referrerPolicy="origin"></script>
       </head>
       <body className="bg-black">
         <Outlet />

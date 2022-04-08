@@ -1,5 +1,7 @@
+import TopNavbar from "~/components/topnavbar";
 import PostsSlideIndex from "../components/postsslider"
 import Faq from "~/components/faqs";
+import Footer from "~/components/footer";
 
 import { Post } from "@prisma/client";
 import {
@@ -17,52 +19,6 @@ export const loader: LoaderFunction = async () => {
   };
   return json(data);
 };
-
-export function LogoKuliahku() {
-  return (
-    <div className="max-w-150 ml-10">
-      <a href="/"><img src="static/img/logokuliahku.png" alt="kuliahku.id" style={{ width: 150 }}></img></a>
-    </div>
-  )
-}
-
-export function TopNavbar() {
-  return (
-    <>
-      <nav className="flex flex-row my-5 justify-between align-middle">
-        <div>
-          <LogoKuliahku />
-        </div>
-        <div className="h-50 flex">
-          <ul className="flex flex-row mx-10 items-center">
-            <li className="text-white mx-4 hover:font-bold"><a href="/posts">Materi Kuliahku</a></li>
-            <li className="text-white mx-4 hover:font-bold">Coretan</li>
-            <li className="text-white mx-4 hover:font-bold">Referensi</li>
-            <li className="text-white mx-4 hover:font-bold">Brainstorm Ide</li>
-            <li className="text-white mx-4 border-2 rounded-lg px-3 py-2 border-white hover:border-sky-500 bg-black hover:bg-sky-500 hover:font-bold">Login</li>
-          </ul>
-        </div>
-      </nav>
-    </>
-  )
-}
-
-export function Footer() {
-  return (
-    <>
-      <footer className="flex mt-5 bottom-0 h-20 items-center">
-        <div className="flex mx-10 px-10">
-          <ul className="flex flex-row text-gray-600 justify-between align-middle">
-            <li className="mx-5">Made with &#9787; by Febri Fahmi Hakim</li>
-            <li className="mx-5"><i className="ri-discord-fill"></i>Discord</li>
-            <li className="mx-5">Kebijakan Layanan</li>
-            <li className="mx-5">Kebijakan Privasi</li>
-          </ul>
-        </div>
-      </footer>
-    </>
-  )
-}
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
