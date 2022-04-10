@@ -5,12 +5,27 @@ import { Editor } from '@tinymce/tinymce-react';
 import Footer from "~/components/footer";
 import { ActionFunction, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
+import { db } from "~/utils/db.server";
 
 export const action: ActionFunction = async ({ request, params }: any) => {
     const formData = await request.formData();
-    const konten = formData.get("postingan");
-    console.log(konten)
-    return redirect("/");
+    const title = formData.get("judul");
+    const lead = formData.get("category");
+    const body = formData.get("postingan");
+    // console.log(judul,kategori,konten)
+    if (
+        typeof title !== "string" ||
+        typeof lead !== "string" ||
+        typeof body !== "string"
+    ) {
+        throw new Error(`Form not submitted correctly.`);
+    }
+    
+    const post = await db.post.create({
+        data: { title, lead, body },
+    });
+
+    return redirect("/posts");
 };
 
 export default function CreatePost() {
@@ -19,12 +34,12 @@ export default function CreatePost() {
         <>
             <TopNavbar />
             <div className="text-white mt-20 mr-60 ml-60">
-                <h1 className="text-4xl font-bold">Create Post</h1>
+                <h1 className="text-4xl font-bold">Buat Postingan</h1>
                 <p className="mt-5">Buat postingan dan unggah materi kuliahmu, catatan kuliah, referensi-referensi yang kamu ikuti dan ide-ide kamu di sini.</p>
                 <div className="mt-10">
                     <Form method="post">
                         <div className="mt-5 flex flex-col">
-                            <input className="pl-5 text-black rounded-lg h-10" type="text" placeholder="Judul Materi, Catatan, Ide"></input>
+                            <input className="pl-5 text-black rounded-lg h-10" type="text" placeholder="Judul Materi, Catatan, Ide" name="judul"></input>
                         </div>
                         <div className="text-black mt-5 flex flex-col">
                             <label className="text-white">Kategori</label>
@@ -57,7 +72,7 @@ export default function CreatePost() {
                         </div>
                         <div className="flex justify-center">
                             <input type="hidden" id="postingan" name="postingan" value={text}></input>
-                            <input type="submit" className="mt-10 text-xl font-bold text-white hover:text-sky-500 py-2 px-20 border-2 rounded-lg border-white hover:border-sky-500 bg-black hover:font-bold" value="Create Post"></input>
+                            <input type="submit" className="mt-10 text-xl font-bold text-white hover:text-sky-500 py-2 px-20 border-2 rounded-lg border-white hover:border-sky-500 bg-black hover:font-bold" value="Simpan"></input>
                         </div>
                     </Form>
                 </div>
