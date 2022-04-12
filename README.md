@@ -1,6 +1,10 @@
-# Welcome to Remix!
+# Kuliahku.id
 
-- [Remix Docs](https://remix.run/docs)
+- [kuliahku.id](https://kuliahku.id)
+
+## Screenshot
+
+![Index page](/static/img/screenshot.png)
 
 ## Development
 

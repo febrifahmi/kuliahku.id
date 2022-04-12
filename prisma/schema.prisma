@@ -10,6 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  username   String   @unique
+  first_name String
+  last_name  String
+  email      String   @unique
+  profpic    String
+  about      String
+  passHash   String
+  posts      Post[]
+}
+
 model Materi {
   id         String   @id @default(uuid())
   createdAt  DateTime @default(now())
@@ -26,4 +40,6 @@ model Post {
   title      String
   lead       String
   body       String
+  user_id    String
+  posters    User     @relation(fields: [user_id], references: [id], onDelete: Cascade) // fk 
 }
