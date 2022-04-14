@@ -10,11 +10,13 @@ import { db } from "~/utils/db.server";
 export const action: ActionFunction = async ({ request, params }: any) => {
     const formData = await request.formData();
     const title = formData.get("judul");
-    const lead = formData.get("category");
+    const category = formData.get("category");
+    const lead = formData.get("lead");
     const body = formData.get("postingan");
     // console.log(judul,kategori,konten)
     if (
         typeof title !== "string" ||
+        typeof category !== "string" ||
         typeof lead !== "string" ||
         typeof body !== "string"
     ) {
@@ -22,7 +24,7 @@ export const action: ActionFunction = async ({ request, params }: any) => {
     }
 
     const post = await db.post.create({
-        data: { title, lead, body },
+        data: { title, category, lead, body },
     });
 
     return redirect("/posts");
@@ -49,6 +51,10 @@ export default function CreatePost() {
                                 <option value="referensi">Referensi</option>
                                 <option value="ide">Ide</option>
                             </select>
+                        </div>
+                        <div className="mt-5 flex flex-col">
+                            <label className="text-white">Ringkasan</label>
+                            <textarea className="pl-5 mt-2 h-20 text-black rounded-lg" type="text" placeholder="Ringkasan" name="lead"></textarea>
                         </div>
                         <div className="mt-10">
                             <Editor

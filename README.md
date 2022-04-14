@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-![Index page](/static/img/screenshot.png)
+![Index page](https://github.com/febrifahmi/kuliahku.id/blob/main/public/static/img/screenshot.png)
 
 ## Development
 
